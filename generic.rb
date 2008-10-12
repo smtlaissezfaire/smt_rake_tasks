@@ -1,10 +1,5 @@
 require 'rake'
 
-# app specific
-
-desc 'Default: run unit tests.'
-task :default => [:spec, :test, :set_revision_number]
-
 # test::unit
 
 require 'rake/testtask'
