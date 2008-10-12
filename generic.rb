@@ -7,6 +7,7 @@ require "#{path}/spec"
 require "#{path}/rubyforge"
 require "#{path}/specdoc"
 require "#{path}/rspec_rcov"
+require "#{path}/flog"
 
 
 # DOCS - Make this more generic
@@ -14,19 +15,6 @@ require "#{path}/rspec_rcov"
 desc 'Create the specdoc + rdoc'
 task :build_docs => [:rerdoc, :specdoc, :rcov, :flog_to_disk]
 
-
-# FLOG Task
-
-desc "Feel the pain of my code, and submit a refactoring patch"
-task :flog do
-  puts %x(find lib | grep ".rb$" | xargs flog)
-end
-
-task :flog_to_disk => :create_doc_directory do
-  puts "Flogging..."
-  %x(find lib | grep ".rb$" | xargs flog > doc/flog.txt)
-  puts "Done Flogging...\n"
-end
 
 # GIT
 
