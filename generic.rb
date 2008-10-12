@@ -6,19 +6,6 @@ require "#{path}/rdoc"
 require "#{path}/spec"
 require "#{path}/rubyforge"
 
-
-# RDOC
-
-def create_doc_directory
-  unless File.exists?(doc_directory)
-    `mkdir doc`
-  end  
-end
-
-task :create_doc_directory do
-  create_doc_directory
-end
-
 # Specdoc
 
 desc "Create the html specdoc"

@@ -30,3 +30,13 @@ end
 
 task :rerdoc => [:clobber_rdoc, :rdoc]
 task :clobber_rdoc => [:clobber_rdoc_without_analytics]
+
+def create_doc_directory
+  unless File.exists?(doc_directory)
+    `mkdir doc`
+  end  
+end
+
+task :create_doc_directory do
+  create_doc_directory
+end
