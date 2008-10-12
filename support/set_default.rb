@@ -1,12 +1,11 @@
-
 def raise_error_on(method_name)
-  unless methods.include?(method_name.to_s)
-    metaclass = class << self; self; end
-    
-    metaclass.instance_eval do
-      define_method(method_name) do
+  method_names = self.methods + self.private_methods
+
+  unless method_names.include?(method_name.to_s)
+    instance_eval(<<-HERE, __FILE__, __LINE__)
+      def #{method_name}
         raise NotImplementedError, "You will need to define the method #{method_name}"
       end
-    end
+    HERE
   end
 end
