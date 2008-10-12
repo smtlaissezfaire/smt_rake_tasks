@@ -1,4 +1,12 @@
+require File.dirname(__FILE__) + "/support/set_default"
+
 namespace :git do
+  raise_error_on :project_pathname
+  
+  def project_version_file_path
+    @project_version_file_path ||= "lib/#{project_pathname}/version.rb"
+  end
+  
   def have_git?
     File.exists?(".git") && `which git`.any?
   rescue
@@ -18,12 +26,9 @@ namespace :git do
     puts get_git_revision
   end
   
-  PROJECT_PATHNAME = "fixture_replacement"
-  PROJECT_VERSION_FILE_PATH = "lib/#{PROJECT_PATHNAME}/version.rb"
-  
   task :substitute_revision do
     def version_file
-      "#{File.dirname(__FILE__)}/#{PROJECT_VERSION_FILE_PATH}"
+      "#{File.dirname(__FILE__)}/#{project_version_file_path}"
     end
     
     def replace_in_file(filename, s, r)
