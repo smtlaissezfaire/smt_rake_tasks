@@ -5,13 +5,7 @@ require "#{path}/test"
 require "#{path}/rdoc"
 require "#{path}/spec"
 require "#{path}/rubyforge"
-
-# Specdoc
-
-desc "Create the html specdoc"
-Spec::Rake::SpecTask.new(:specdoc => :create_doc_directory) do |t|
-  t.spec_opts = ["--format", "html:doc/specdoc.html"]
-end
+require "#{path}/specdoc"
 
 # rcov through rspec
 
