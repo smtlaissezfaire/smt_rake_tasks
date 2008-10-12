@@ -6,17 +6,8 @@ require "#{path}/rdoc"
 require "#{path}/spec"
 require "#{path}/rubyforge"
 require "#{path}/specdoc"
+require "#{path}/rspec_rcov"
 
-# rcov through rspec
-
-require 'spec/rake/verify_rcov'
-
-desc "Run all examples with RCov"
-Spec::Rake::SpecTask.new(:rcov) do |t|
-  t.rcov = true
-  t.rcov_opts = ['--exclude', 'spec', "--exclude", "gems"]
-  t.rcov_dir = "doc/rcov"
-end
 
 # DOCS - Make this more generic
 
