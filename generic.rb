@@ -3,17 +3,8 @@ require 'rake'
 path = File.dirname(__FILE__)
 require "#{path}/test"
 require "#{path}/rdoc"
+require "#{path}/spec"
 
-
-# Specs
-
-require 'spec/rake/spectask'
-
-desc 'Run the specs'
-Spec::Rake::SpecTask.new do |t|
-  t.warning = false
-  t.spec_opts = ["--color"]
-end
 
 # Rubyforge.  Publish gems
 
